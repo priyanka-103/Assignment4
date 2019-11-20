@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New</title>
+</head>
+
+<body>
+<script>
+function validateForm() {
+  x = document.forms["myForm"]["name"].value;
+  if (x.length >50) {
+    alert("Name cannot be more than 50 characters");
+    return false;
+  }
+  x = document.forms["myForm"]["address"].value;
+  if (x.length >50) {
+    alert("Address cannot be more than 50 characters");
+    return false;
+  }
+  x = document.forms["myForm"]["city"].value;
+  if (x.length >50) {
+    alert("CIty cannot be more than 50 characters");
+    return false;
+  }
+	//phone
+	x = document.forms["myForm"]["phone"].value;
+	var phoneno = /^[(]{1}[0-9]{3}[)]{1}[0-9]{3}[-]{1}[0-9]{4}$/
+	var phoneno1 = /^[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{4}$/
+	
+	if(!x.match(phoneno) &&!x.match(phoneno1))
+	{
+		alert("Not a valid phone number.Please follow the format (123)123-1234 or 123-123-1234");
+		return false;
+	}
+      
+	//email
+	x = document.forms["myForm"]["email"].value;
+	var phoneno = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/	
+	if(!x.match(phoneno))
+	{
+		alert("Not a valid email.Please enter the again");
+		return false;
+	}
+	//make
+	x = document.forms["myForm"]["make"].value;
+	if (x.length >50) 
+	{
+		alert("Vehicle make cannot be more than 50 characters");
+		return false;
+	}
+	//model
+	x = document.forms["myForm"]["model"].value;
+	if (x.length >50) 
+	{
+		alert("Vehicle model cannot be more than 50 characters");
+		return false;
+	}
+  //year
+  x = document.forms["myForm"]["year"].value;
+  
+   var numbers = /^[0-9]+$/;
+   if(!x.match(numbers))
+   {
+      alert('Please input numeric characters only');
+      
+      return false;
+   }
+   if(parseInt(x)<1970 || parseInt(x)>2019)
+   {
+		alert('Please input numbers between 1970 and 2019');
+      
+      return false;
+   }
+   
+   document.write
+}
+</script>
+
+
+
+ 
+
+<form name="myForm" onsubmit="return validateForm()" action="submit.php" method="post">
+  Name:<br>
+  <input type="text" name="name" value="" required>
+  <br>
+  Address:<br>
+  <input type="address" name="address" value="" required>
+  <br>
+  City:<br>
+  <input type="city" name="city" value="" required>
+  <br>
+  Phone number:<br>
+  <input type="text" name="phone" required>
+  <br>
+  Email address:<br>
+  <input type="email" name="email" value="" required>
+  <br>
+  <br>
+  Vehicle:<br>
+  Make:<br>
+  <input type="text" name="make" value="" required>
+  <br>
+  Model<br>
+  <input type="text" name="model" value="" required>
+  <br>
+  Year:<br>
+  <input type="text" name="year" value="" required>
+  <br>
+  
+  <br><br>
+  <input type="submit" onclick="validateForm" value="Submit">
+</form>
+</body>
+
+</html>
